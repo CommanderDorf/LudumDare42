@@ -5,8 +5,8 @@ using UnityEngine;
 public class MouseController : MonoBehaviour
 {
     [SerializeField] private GameObject _cursor;
-
     [SerializeField] private GameObject _newTile;
+    [SerializeField] private GameObject _player;
 
     private Vector3 _mouseWorldPos;
     private Camera _cam;
@@ -36,7 +36,13 @@ public class MouseController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector2Int pos = new Vector2Int((int)_mouseWorldPos.x, (int)_mouseWorldPos.y);
-            //_newTile = Board.Instance.PushTile(_newTile, pos);
+
+            if (Mathf.FloorToInt(_player.transform.position.x + _offset.x) == (int)_mouseWorldPos.x) return;
+            if (Mathf.FloorToInt(_player.transform.position.y + _offset.y) == (int)_mouseWorldPos.y) return;
+            
+            GameObject go = Board.Instance.PushTile(_newTile, pos);;
+            if (go != null)
+                _newTile = go;
         }
 
     }
