@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Cursor
   - 
   - 
   - 
@@ -38,9 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Hidden
+    uniqueID: 2235883803
+    locked: 0
+  - name: BG
+    uniqueID: 261453133
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: UI
     uniqueID: 664663953
+    locked: 0
+  - name: Particles
+    uniqueID: 3554000483
     locked: 0

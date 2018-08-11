@@ -9,16 +9,18 @@ public class Board : MonoBehaviour
     
     [SerializeField] private int _boardSize = 10;
     [SerializeField] private List<GameObject> _tiles;
+    [SerializeField] private GameObject _blocker;
+    [SerializeField] private GameObject _border;
     private readonly int[] _rotations = new[] {0, 90, 180, 360};
 
     private List<Row> _rows = new List<Row>();
     private List<Row> _columns = new List<Row>();
+    private GameObject[,] _blockers;
 
     private GameObject _boardObj;
 
     private void Awake()
     {
-        Debug.Log(_rows);
         if (_instance == null)
         {
             _instance = this;
@@ -30,11 +32,13 @@ public class Board : MonoBehaviour
         }
         
         _boardObj = new GameObject("Board");
+        _blockers = new GameObject[_boardSize, _boardSize];
     }
 
     void Start()
     {
         BoardSetUp();
+        SpawnBorders();
     }
 
     private void BoardSetUp()
@@ -79,6 +83,20 @@ public class Board : MonoBehaviour
             }
         }
     }
+
+    private void SpawnBorders()
+    {
+        for (int x = -1; x < _boardSize + 1; x++)
+        {
+            for (int y = - 1; y < _boardSize + 1; y++)
+            {
+                if (x == -1 || x == _boardSize)
+                    Instantiate(_border, new Vector3(x, y), Quaternion.identity);
+                else if(y == -1 || y == _boardSize)
+                    Instantiate(_border, new Vector3(x, y), Quaternion.identity);
+            }
+        }
+    }
     
     public GameObject PushTile(GameObject tile, Vector2Int pos)
     {
@@ -118,5 +136,10 @@ public class Board : MonoBehaviour
         return null;
     }
 
-
+    public void BlockTile(int x, int y)
+    {
+        if (x == _boardSize - 1 && y == _boardSize - 1) return;
+        GameObject blockerGo = Instantiate(_blocker, new Vector3(x, y, 0), Quaternion.identity);
+        _blockers[x, y] = blockerGo;
+    }
 }
