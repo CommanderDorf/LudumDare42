@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -9,6 +10,9 @@ public class Board : MonoBehaviour
     
     [SerializeField] private int _boardSize = 10;
     [SerializeField] private List<GameObject> _tiles;
+    [SerializeField] private List<GameObject> _coins;
+    [SerializeField] private int _coinSpawnChance;
+    [SerializeField] private AudioSource _coinAudio;
     [SerializeField] private GameObject _blocker;
     [SerializeField] private GameObject _border;
     private readonly int[] _rotations = new[] {0, 90, 180, 360};
@@ -18,6 +22,11 @@ public class Board : MonoBehaviour
     private GameObject[,] _blockers;
 
     private GameObject _boardObj;
+
+    public int BoardSize
+    {
+        get { return _boardSize; }
+    }
 
     private void Awake()
     {
@@ -32,18 +41,35 @@ public class Board : MonoBehaviour
         }
         
         _boardObj = new GameObject("Board");
-        _blockers = new GameObject[_boardSize, _boardSize];
+        _blockers = null;
     }
 
-    void Start()
+    public void NewBoard(int size)
     {
+        _boardSize = size;
         BoardSetUp();
         SpawnBorders();
     }
 
+    private void ResetBoard()
+    {
+        
+        _rows.Clear();
+        _columns.Clear();
+        _blockers = null;
+
+        foreach (Transform child in _boardObj.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    
     private void BoardSetUp()
     {
-
+        ResetBoard();
+        
+        _blockers = new GameObject[_boardSize, _boardSize];
+        
         for (int i = 0; i < _boardSize; i++)
         {
             _rows.Add(new Row(_boardSize, false));
@@ -64,6 +90,18 @@ public class Board : MonoBehaviour
                 
                 _rows[y].Cells[x] = go;
                 _columns[x].Cells[y] = go;
+
+                
+                // If we are on the start or goal tile, do not spawn a coin
+                if ((x == 0 && y == 0) || (x == _boardSize - 1 && y == _boardSize - 1)) continue;
+                
+                // Chance to spawn a random coin
+                if (_coinSpawnChance > Random.Range(0, 100))
+                {
+                    GameObject coin = Instantiate(_coins[Random.Range(0, _coins.Count)], go.transform.position, Quaternion.identity);
+                    coin.transform.parent = go.transform;
+                    coin.GetComponent<Coin>().SetAudio(_coinAudio);
+                }
             }
         }
     }
@@ -86,14 +124,20 @@ public class Board : MonoBehaviour
 
     private void SpawnBorders()
     {
+        GameObject currentGo = null;
         for (int x = -1; x < _boardSize + 1; x++)
         {
             for (int y = - 1; y < _boardSize + 1; y++)
             {
                 if (x == -1 || x == _boardSize)
-                    Instantiate(_border, new Vector3(x, y), Quaternion.identity);
+                    currentGo = Instantiate(_border, new Vector3(x, y), Quaternion.identity);
                 else if(y == -1 || y == _boardSize)
-                    Instantiate(_border, new Vector3(x, y), Quaternion.identity);
+                    currentGo = Instantiate(_border, new Vector3(x, y), Quaternion.identity);
+
+                if (currentGo != null)
+                {
+                    currentGo.transform.parent = _boardObj.transform;
+                }
             }
         }
     }
@@ -102,6 +146,8 @@ public class Board : MonoBehaviour
     {
         if (pos.x >= _boardSize && (pos.y < 0 || pos.y >= _boardSize)) return null;
         if (pos.x < 0 && (pos.y < 0 || pos.y >= _boardSize)) return null;
+
+        tile.transform.parent = _boardObj.transform;
         
         // Right side of the board
         if (pos.x == _boardSize)
@@ -140,6 +186,7 @@ public class Board : MonoBehaviour
     {
         if (x == _boardSize - 1 && y == _boardSize - 1) return;
         GameObject blockerGo = Instantiate(_blocker, new Vector3(x, y, 0), Quaternion.identity);
+        blockerGo.transform.parent = _boardObj.transform;
         _blockers[x, y] = blockerGo;
     }
 }

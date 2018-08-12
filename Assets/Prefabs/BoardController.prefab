@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4283366852067788}
   - component: {fileID: 114291248489511876}
+  - component: {fileID: 114386162518300194}
   m_Layer: 0
   m_Name: BoardController
   m_TagString: Untagged
@@ -51,9 +52,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2645279d87ba1d5418dede98e588384a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boardSize: 10
+  _boardSize: 5
   _tiles:
-  - {fileID: 114126003749484850, guid: cd7adea39c7ee834781c5311bba1fe40, type: 2}
-  - {fileID: 114077396063686178, guid: e8de27406e0daad4c87f56a1704f0fde, type: 2}
-  - {fileID: 114334990402616618, guid: cf9cd4fc862cd3c438be3787177db24e, type: 2}
-  - {fileID: 114077596034339278, guid: d8de2b2135d3ed9419c5e8509eccff5c, type: 2}
+  - {fileID: 1769295550720368, guid: cd7adea39c7ee834781c5311bba1fe40, type: 2}
+  - {fileID: 1792300332640144, guid: e8de27406e0daad4c87f56a1704f0fde, type: 2}
+  - {fileID: 1196077120048756, guid: cf9cd4fc862cd3c438be3787177db24e, type: 2}
+  - {fileID: 1867464199151960, guid: d8de2b2135d3ed9419c5e8509eccff5c, type: 2}
+  _coins:
+  - {fileID: 1331770021742574, guid: 41abdad7615a22840af8250443e7fc85, type: 2}
+  - {fileID: 1449759134152014, guid: a1c506b089643a5479f1cdf6f5a5ebb8, type: 2}
+  - {fileID: 1865294653185034, guid: a28db6189d26c824fae10bbdbe6ccc1c, type: 2}
+  _coinSpawnChance: 33
+  _blocker: {fileID: 1925821723946268, guid: 019c223f4f11cb74ba8a859583631e10, type: 2}
+  _border: {fileID: 1925821723946268, guid: 6fb405c963545914d901cbb614a39416, type: 2}
+--- !u!114 &114386162518300194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1095806898203438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d780f2409e6fb94b892a4c567abf906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blockingObj: {fileID: 1316307247319640, guid: 0ad6c8da8cf4c0046ae05ff0d92fbf28,
+    type: 2}

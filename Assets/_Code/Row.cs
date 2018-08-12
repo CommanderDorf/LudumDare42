@@ -13,6 +13,13 @@ public class Row
         _isVertical = isVertical;
     }
 
+    public void ResetRow()
+    {
+        foreach (GameObject go in Cells)
+        {
+            GameObject.Destroy(go);
+        }
+    }
     
     // Pull the first entry out, shift everything to the left
     // return the pulled first entry
@@ -31,7 +38,9 @@ public class Row
         
         newEntry.transform.position += -dir;
         Cells[Cells.Length - 1] = newEntry;
-
+        
+        firstEntry.transform.parent = null;
+        
         return firstEntry;
     }
 
@@ -51,6 +60,8 @@ public class Row
         newEntry.transform.position += dir;
         Cells[0] = newEntry;
 
+        firstEntry.transform.parent = null;
+        
         return firstEntry;
     }
 }

@@ -4,26 +4,58 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    [SerializeField] private float _speed;
-
-    private Rigidbody2D _rb2D;
-    private Vector2 _move;
+    [SerializeField] private LayerMask _wallMask;
+    [SerializeField] private AudioSource _walkAudio;
     
-    // Use this for initialization
-    void Start()
-    {
-        _rb2D = GetComponent<Rigidbody2D>();
-    }
+    private RaycastHit2D _hit;
 
+    public bool HasControl = false;
+    
     // Update is called once per frame
     void Update()
     {
-        _move.x = Input.GetAxisRaw("Horizontal");
-        _move.y = Input.GetAxisRaw("Vertical");
+        if(!HasControl) return;;
+        
+        if (Input.GetButtonDown("Up"))
+        {
+            _hit = Physics2D.Raycast(transform.position, Vector2.up, 1f, _wallMask);
 
-        _rb2D.velocity = _move;
-        
-        
+            if (_hit.collider == null)
+            {
+                transform.Translate(Vector2.up);
+                MoveCounter.MoveCount++;
+                _walkAudio.Play();
+            }
+        }
+        else if (Input.GetButtonDown("Down"))
+        {
+            _hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, _wallMask);
+            if (_hit.collider == null)
+            {
+                transform.Translate(Vector2.down);
+                MoveCounter.MoveCount++;
+                _walkAudio.Play();
+            }
+        }
+        else if (Input.GetButtonDown("Right"))
+        {
+            _hit = Physics2D.Raycast(transform.position, Vector2.right, 1f, _wallMask);
+            if (_hit.collider == null)
+            {
+                transform.Translate(Vector2.right);
+                MoveCounter.MoveCount++;
+                _walkAudio.Play();
+            }
+        }
+        else if (Input.GetButtonDown("Left"))
+        {
+            _hit = Physics2D.Raycast(transform.position, Vector2.left, 1f, _wallMask);
+            if (_hit.collider == null)
+            {
+                transform.Translate(Vector2.left);
+                MoveCounter.MoveCount++;
+                _walkAudio.Play();
+            }
+        }
     }
 }

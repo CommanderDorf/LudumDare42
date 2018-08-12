@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61441945111057334}
   - component: {fileID: 61592157244152678}
   - component: {fileID: 61209913099503046}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4417050360592542}
   - component: {fileID: 212345692492323560}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TileBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4721115794973066}
   - component: {fileID: 212366598318469284}
   - component: {fileID: 114077596034339278}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: T_intersection
   m_TagString: Untagged
   m_Icon: {fileID: 0}

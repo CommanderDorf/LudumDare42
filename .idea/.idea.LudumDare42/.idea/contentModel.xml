@@ -7,13 +7,26 @@
       <e p="Assets" t="Include">
         <e p="_Code" t="Include">
           <e p="Board.cs" t="Include" />
+          <e p="Coin.cs" t="Include" />
           <e p="DangerHighlight.cs" t="Include" />
+          <e p="GameController.cs" t="Include" />
           <e p="Goal.cs" t="Include" />
           <e p="MouseController.cs" t="Include" />
+          <e p="MoveCounter.cs" t="Include" />
+          <e p="MoveCountUpdater.cs" t="Include" />
+          <e p="MusicPlayer.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
+          <e p="PlayerKiller.cs" t="Include" />
           <e p="Row.cs" t="Include" />
+          <e p="SceneController.cs" t="Include" />
+          <e p="Score.cs" t="Include" />
+          <e p="ScoreUiUpdater.cs" t="Include" />
           <e p="Tile.cs" t="Include" />
+          <e p="UIController.cs" t="Include" />
           <e p="WorldDestroyer.cs" t="Include" />
+        </e>
+        <e p="Fonts" t="Include">
+          <e p="8bitlimit.txt" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />

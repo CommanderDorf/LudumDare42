@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4507808703153878}
   - component: {fileID: 212948714941010722}
   - component: {fileID: 114334990402616618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4281936734812568}
   - component: {fileID: 212429919450630336}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TileBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4046582010641076}
   - component: {fileID: 61765632433419978}
   - component: {fileID: 61763477248122250}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}

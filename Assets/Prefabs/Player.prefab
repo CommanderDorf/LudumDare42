@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4702422794474200}
   - component: {fileID: 212455759019335032}
   - component: {fileID: 58927100703135844}
-  - component: {fileID: 50729261650602186}
   - component: {fileID: 114745248184950568}
+  - component: {fileID: 50528559902309720}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,14 +43,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50729261650602186
+--- !u!50 &50528559902309720
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811662608859442}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -89,7 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea44356e75d3934a94083d07d342f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _wallMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!212 &212455759019335032
 SpriteRenderer:
   m_ObjectHideFlags: 1

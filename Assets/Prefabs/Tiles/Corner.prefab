@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4739036020056924}
   - component: {fileID: 212590082756340426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TileBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 61895837643542986}
   - component: {fileID: 61861695407434250}
   - component: {fileID: 61940427008657762}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4556609309206016}
   - component: {fileID: 212638806297621514}
   - component: {fileID: 114126003749484850}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
