@@ -387,6 +387,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114284002779600770, guid: 4b2f20e99942953438ac61c092994a87,
+        type: 2}
+      propertyPath: m_Text
+      value: Triangle Adventures
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2f20e99942953438ac61c092994a87, type: 2}
   m_IsPrefabAsset: 0
